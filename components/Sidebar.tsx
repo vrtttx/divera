@@ -1,6 +1,12 @@
 'use client';
 
+import { FC } from 'react';
+
 import { cn } from '@/lib/utils';
+
+import Image from 'next/image';
+import Link from 'next/link';
+
 import {
 	Code,
 	ImageIcon,
@@ -10,10 +16,8 @@ import {
 	Settings,
 	VideoIcon,
 } from 'lucide-react';
+
 import { Montserrat } from 'next/font/google';
-import Image from 'next/image';
-import Link from 'next/link';
-import { FC } from 'react';
 
 const montserrat = Montserrat({ weight: '200', subsets: ['latin'] });
 
