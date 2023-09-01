@@ -63,7 +63,7 @@ const routes = [
 		label: 'Settings',
 		icon: Settings,
 		href: '/settings',
-		color: 'text-neutral-400',
+		color: 'text-emerald-500',
 	},
 ];
 
@@ -101,7 +101,7 @@ const Sidebar: FC<SidebarProps> = ({}) => {
 								'group w-full flex justify-start p-3 font-light text-sm tracking-wider rounded-lg transition cursor-pointer hover:text-neutral-100 hover:bg-neutral-50/5',
 								pathname === route.href
 									? 'text-white bg-neutral-50/5'
-									: 'text-neutral-300'
+									: 'text-emerald-500'
 							)}
 						>
 							<div className="flex flex-1 items-center">
