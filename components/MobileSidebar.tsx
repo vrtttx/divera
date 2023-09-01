@@ -1,6 +1,6 @@
 'use client';
 
-import { FC } from 'react';
+import { FC, useEffect, useState } from 'react';
 
 import Sidebar from './Sidebar';
 import { Button } from '@/components/ui/button';
@@ -11,6 +11,16 @@ import { Menu } from 'lucide-react';
 interface MobileSidebarProps {}
 
 const MobileSidebar: FC<MobileSidebarProps> = ({}) => {
+	const [isMounted, setIsMounted] = useState(false);
+
+	useEffect(() => {
+		setIsMounted(true);
+	}, []);
+
+	if (!isMounted) {
+		return null;
+	}
+
 	return (
 		<Sheet>
 			<SheetTrigger>
