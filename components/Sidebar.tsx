@@ -27,43 +27,43 @@ const routes = [
 		label: 'Dashboard',
 		icon: LayoutDashboard,
 		href: '/dashboard',
-		color: 'text-emerald-500',
+		color: 'text-white',
 	},
 	{
 		label: 'Conversation',
 		icon: MessageSquare,
 		href: '/conversation',
-		color: 'text-emerald-500',
+		color: 'text-violet-400',
 	},
 	{
 		label: 'Code Generation',
 		icon: Code,
 		href: '/code',
-		color: 'text-emerald-500',
+		color: 'text-pink-400',
 	},
 	{
 		label: 'Image Generation',
 		icon: ImageIcon,
 		href: '/image',
-		color: 'text-emerald-500',
+		color: 'text-sky-400',
 	},
 	{
 		label: 'Video Generation',
 		icon: VideoIcon,
 		href: '/video',
-		color: 'text-emerald-500',
+		color: 'text-amber-300',
 	},
 	{
 		label: 'Music Generation',
 		icon: Music,
 		href: '/music',
-		color: 'text-emerald-500',
+		color: 'text-red-400',
 	},
 	{
 		label: 'Settings',
 		icon: Settings,
 		href: '/settings',
-		color: 'text-emerald-500',
+		color: 'text-neutral-500',
 	},
 ];
 
@@ -73,14 +73,14 @@ const Sidebar: FC<SidebarProps> = ({}) => {
 	const pathname = usePathname();
 
 	return (
-		<div className="h-full flex flex-col space-y-4 py-4 text-white border-r border-emerald-800 bg-gradient-to-tr from-emerald-950 to-neutral-950">
+		<div className="h-full flex flex-col space-y-4 py-4 text-white border-r border-neutral-800 bg-gradient-to-tr from-neutral-800 to-neutral-950">
 			<div className="flex-1 px-3 py-2">
 				<Link
 					href="/dashboard"
 					className="flex items-center justify-center mt-3 mb-9"
 				>
 					<div className="w-10 h-10 relative mr-3">
-						<Image src="/assets/images/logo-icon-color.png" alt="logo" fill />
+						<Image src="/assets/images/logo-icon-pb.png" alt="logo" fill />
 					</div>
 					<h1
 						className={cn(
@@ -101,7 +101,7 @@ const Sidebar: FC<SidebarProps> = ({}) => {
 								'group w-full flex justify-start p-3 font-light text-sm tracking-wider rounded-lg transition cursor-pointer hover:text-neutral-100 hover:bg-neutral-50/5',
 								pathname === route.href
 									? 'text-white bg-neutral-50/5'
-									: 'text-emerald-500'
+									: 'text-neutral-500'
 							)}
 						>
 							<div className="flex flex-1 items-center">
