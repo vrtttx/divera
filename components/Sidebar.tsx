@@ -1,6 +1,13 @@
 'use client';
 
+import { FC } from 'react';
+import { usePathname } from 'next/navigation';
+
 import { cn } from '@/lib/utils';
+
+import Image from 'next/image';
+import Link from 'next/link';
+
 import {
 	Code,
 	ImageIcon,
@@ -10,10 +17,8 @@ import {
 	Settings,
 	VideoIcon,
 } from 'lucide-react';
+
 import { Montserrat } from 'next/font/google';
-import Image from 'next/image';
-import Link from 'next/link';
-import { FC } from 'react';
 
 const montserrat = Montserrat({ weight: '200', subsets: ['latin'] });
 
@@ -58,13 +63,15 @@ const routes = [
 		label: 'Settings',
 		icon: Settings,
 		href: '/settings',
-		color: 'text-gray-400',
+		color: 'text-emerald-500',
 	},
 ];
 
 interface SidebarProps {}
 
 const Sidebar: FC<SidebarProps> = ({}) => {
+	const pathname = usePathname();
+
 	return (
 		<div className="h-full flex flex-col space-y-4 py-4 text-white border-r border-emerald-800 bg-gradient-to-tr from-emerald-950 to-neutral-950">
 			<div className="flex-1 px-3 py-2">
@@ -90,7 +97,12 @@ const Sidebar: FC<SidebarProps> = ({}) => {
 						<Link
 							key={route.href}
 							href={route.href}
-							className="group w-full flex justify-start p-3 font-light text-sm tracking-wider rounded-lg transition cursor-pointer hover:text-neutral-100 hover:bg-neutral-50/5"
+							className={cn(
+								'group w-full flex justify-start p-3 font-light text-sm tracking-wider rounded-lg transition cursor-pointer hover:text-neutral-100 hover:bg-neutral-50/5',
+								pathname === route.href
+									? 'text-white bg-neutral-50/5'
+									: 'text-emerald-500'
+							)}
 						>
 							<div className="flex flex-1 items-center">
 								<route.icon className={cn('w-6 h-6 mr-3', route.color)} />

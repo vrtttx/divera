@@ -1,7 +1,5 @@
-import { Button } from '@/components/ui/button';
 import { UserButton } from '@clerk/nextjs';
 
-import { Menu } from 'lucide-react';
 import MobileSidebar from './MobileSidebar';
 
 const Navbar = () => {
