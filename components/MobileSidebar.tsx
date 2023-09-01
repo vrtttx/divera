@@ -25,7 +25,7 @@ const MobileSidebar: FC<MobileSidebarProps> = ({}) => {
 		<Sheet>
 			<SheetTrigger>
 				<Button variant="ghost" size="icon" className="md:hidden">
-					<Menu />
+					<Menu className="text-neutral-50" />
 				</Button>
 			</SheetTrigger>
 			<SheetContent side="left" className="p-0">
