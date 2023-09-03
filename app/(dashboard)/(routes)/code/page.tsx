@@ -114,7 +114,7 @@ const CodePage: FC<CodePageProps> = ({}) => {
 						</div>
 					)}
 					{messages.length === 0 && !isLoading && (
-						<Empty label="No conversations found. Go ahead and start a new one!" />
+						<Empty label="No code requests found. Go ahead and try it!" />
 					)}
 					<div className="flex flex-col-reverse gap-y-4">
 						{messages.map((message) => (
