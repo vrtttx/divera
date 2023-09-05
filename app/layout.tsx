@@ -5,6 +5,7 @@ import { ClerkProvider } from '@clerk/nextjs';
 import './globals.css';
 
 import { Inter } from 'next/font/google';
+import { ModalProvider } from '@/components/ModalProvider';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -22,7 +23,10 @@ export default function RootLayout({
 	return (
 		<ClerkProvider>
 			<html lang="en">
-				<body className={`${inter.className} bg-neutral-950`}>{children}</body>
+				<body className={`${inter.className} bg-neutral-950`}>
+					<ModalProvider />
+					{children}
+				</body>
 			</html>
 		</ClerkProvider>
 	);
