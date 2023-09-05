@@ -3,6 +3,7 @@
 import { FC, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useRouter } from 'next/navigation';
+import { useProModal } from '@/hooks/useProModal';
 
 import { formSchema } from './constants';
 
@@ -27,6 +28,8 @@ import { BotAvatar } from '@/components/BotAvatar';
 interface ConversationPageProps {}
 
 const ConversationPage: FC<ConversationPageProps> = ({}) => {
+	const proModal = useProModal();
+
 	const router = useRouter();
 
 	const [messages, setMessages] = useState<
@@ -59,8 +62,9 @@ const ConversationPage: FC<ConversationPageProps> = ({}) => {
 
 			form.reset();
 		} catch (error: any) {
-			// TODO: Open Pro Modal
-			console.log(error);
+			if (error?.response?.status === 403) {
+				proModal.onOpen();
+			}
 		} finally {
 			router.refresh();
 		}

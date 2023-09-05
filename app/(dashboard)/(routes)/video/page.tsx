@@ -3,6 +3,7 @@
 import { FC, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useRouter } from 'next/navigation';
+import { useProModal } from '@/hooks/useProModal';
 
 import { formSchema } from './constants';
 
@@ -22,6 +23,8 @@ import { VideoIcon } from 'lucide-react';
 interface VideoPageProps {}
 
 const VideoPage: FC<VideoPageProps> = ({}) => {
+	const proModal = useProModal();
+
 	const router = useRouter();
 
 	const [video, setVideo] = useState<string>();
@@ -45,8 +48,9 @@ const VideoPage: FC<VideoPageProps> = ({}) => {
 
 			form.reset();
 		} catch (error: any) {
-			// TODO: Open Pro Modal
-			console.log(error);
+			if (error?.response?.status === 403) {
+				proModal.onOpen();
+			}
 		} finally {
 			router.refresh();
 		}

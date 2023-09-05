@@ -3,10 +3,9 @@
 import { FC, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useRouter } from 'next/navigation';
+import { useProModal } from '@/hooks/useProModal';
 
 import { amountOptions, formSchema, resolutionOptions } from './constants';
-
-import { cn } from '@/lib/utils';
 
 import axios from 'axios';
 import Image from 'next/image';
@@ -33,6 +32,8 @@ import { Download, ImageIcon } from 'lucide-react';
 interface ImagePageProps {}
 
 const ImagePage: FC<ImagePageProps> = ({}) => {
+	const proModal = useProModal();
+
 	const router = useRouter();
 
 	const [images, setImages] = useState<string[]>([]);
@@ -60,8 +61,9 @@ const ImagePage: FC<ImagePageProps> = ({}) => {
 
 			form.reset();
 		} catch (error: any) {
-			// TODO: Open Pro Modal
-			console.log(error);
+			if (error?.response?.status === 403) {
+				proModal.onOpen();
+			}
 		} finally {
 			router.refresh();
 		}

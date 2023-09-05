@@ -3,6 +3,7 @@
 import { FC, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useRouter } from 'next/navigation';
+import { useProModal } from '@/hooks/useProModal';
 
 import { formSchema } from './constants';
 
@@ -22,6 +23,8 @@ import { Music } from 'lucide-react';
 interface MusicPageProps {}
 
 const MusicPage: FC<MusicPageProps> = ({}) => {
+	const proModal = useProModal();
+
 	const router = useRouter();
 
 	const [music, setMusic] = useState<string>();
@@ -45,8 +48,9 @@ const MusicPage: FC<MusicPageProps> = ({}) => {
 
 			form.reset();
 		} catch (error: any) {
-			// TODO: Open Pro Modal
-			console.log(error);
+			if (error?.response?.status === 403) {
+				proModal.onOpen();
+			}
 		} finally {
 			router.refresh();
 		}
