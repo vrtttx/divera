@@ -8,6 +8,8 @@ import { cn } from '@/lib/utils';
 import Image from 'next/image';
 import Link from 'next/link';
 
+import FreeCounter from './FreeCounter';
+
 import {
 	Code,
 	ImageIcon,
@@ -67,9 +69,11 @@ const routes = [
 	},
 ];
 
-interface SidebarProps {}
+interface SidebarProps {
+	apiLimitCount: number;
+}
 
-const Sidebar: FC<SidebarProps> = ({}) => {
+const Sidebar: FC<SidebarProps> = ({ apiLimitCount = 0 }: SidebarProps) => {
 	const pathname = usePathname();
 
 	return (
@@ -112,6 +116,7 @@ const Sidebar: FC<SidebarProps> = ({}) => {
 					))}
 				</div>
 			</div>
+			<FreeCounter apiLimitCount={apiLimitCount} />
 		</div>
 	);
 };
