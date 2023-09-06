@@ -8,7 +8,7 @@
 
 Designed to be your personalized AI companion, Divera offers a diverse range of services, including custom conversations, curated music creation, stunning images, captivating videos, and even code generation. With Divera, the possibilities are as limitless as your imagination.
 
-Experience the future today by visiting our [live demo](https://chattr-gold.vercel.app/). Explore the realm of endless possibilities as Divera delivers tailored results that cater to your unique requirements.
+Experience the future today by visiting our [live demo](https://divera.vercel.app/). Explore the realm of endless possibilities as Divera delivers tailored results that cater to your unique requirements.
 
 ### Table of Contents
 
