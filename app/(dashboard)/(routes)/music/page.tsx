@@ -7,8 +7,9 @@ import { useProModal } from '@/hooks/useProModal';
 
 import { formSchema } from './constants';
 
-import axios from 'axios';
 import * as z from 'zod';
+import axios from 'axios';
+import { toast } from 'react-hot-toast';
 import { zodResolver } from '@hookform/resolvers/zod';
 
 import Empty from '@/components/Empty';
@@ -50,6 +51,8 @@ const MusicPage: FC<MusicPageProps> = ({}) => {
 		} catch (error: any) {
 			if (error?.response?.status === 403) {
 				proModal.onOpen();
+			} else {
+				toast.error('Something went wrong...');
 			}
 		} finally {
 			router.refresh();

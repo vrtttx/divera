@@ -5,26 +5,27 @@ import { useForm } from 'react-hook-form';
 import { useRouter } from 'next/navigation';
 import { useProModal } from '@/hooks/useProModal';
 
+import { cn } from '@/lib/utils';
+
 import { formSchema } from './constants';
 
-import OpenAI from 'openai';
-
-import axios from 'axios';
-import ReactMarkdown from 'react-markdown';
 import * as z from 'zod';
+import axios from 'axios';
+import OpenAI from 'openai';
+import ReactMarkdown from 'react-markdown';
+import { toast } from 'react-hot-toast';
 import { zodResolver } from '@hookform/resolvers/zod';
 
 import Empty from '@/components/Empty';
 import Heading from '@/components/Heading';
+import { BotAvatar } from '@/components/BotAvatar';
 import { Loader } from '@/components/Loader';
+import { UserAvatar } from '@/components/UserAvatar';
 import { Button } from '@/components/ui/button';
 import { Form, FormControl, FormField, FormItem } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 
 import { Code } from 'lucide-react';
-import { cn } from '@/lib/utils';
-import { UserAvatar } from '@/components/UserAvatar';
-import { BotAvatar } from '@/components/BotAvatar';
 
 interface CodePageProps {}
 
@@ -65,6 +66,8 @@ const CodePage: FC<CodePageProps> = ({}) => {
 		} catch (error: any) {
 			if (error?.response?.status === 403) {
 				proModal.onOpen();
+			} else {
+				toast.error('Something went wrong...');
 			}
 		} finally {
 			router.refresh();
