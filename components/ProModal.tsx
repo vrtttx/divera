@@ -1,7 +1,16 @@
 'use client';
 
+import { useState } from 'react';
 import { useProModal } from '@/hooks/useProModal';
 
+import { cn } from '@/lib/utils';
+
+import axios from 'axios';
+import { toast } from 'react-hot-toast';
+
+import { Badge } from './ui/badge';
+import { Button } from './ui/button';
+import { Card } from './ui/card';
 import {
 	Dialog,
 	DialogContent,
@@ -10,7 +19,6 @@ import {
 	DialogHeader,
 	DialogTitle,
 } from './ui/dialog';
-import { Badge } from './ui/badge';
 
 import {
 	Check,
@@ -21,11 +29,6 @@ import {
 	VideoIcon,
 	Zap,
 } from 'lucide-react';
-import { Card } from './ui/card';
-import { cn } from '@/lib/utils';
-import { Button } from './ui/button';
-import axios from 'axios';
-import { useState } from 'react';
 
 const tools = [
 	{
@@ -73,7 +76,7 @@ export const ProModal = () => {
 
 			window.location.href = response.data.url;
 		} catch (error: any) {
-			console.log(error, 'STRIPE_CLIENT_ERROR');
+			toast.error('Something went wrong...');
 		} finally {
 			setLoading(false);
 		}
@@ -119,6 +122,7 @@ export const ProModal = () => {
 						variant="premium"
 						className="w-full"
 						onClick={onSubscribe}
+						disabled={loading}
 					>
 						Upgrade <Zap className="w-4 h-4 ml-2 fill-neutral-50" />
 					</Button>
